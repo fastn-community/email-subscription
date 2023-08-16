@@ -1,0 +1,66 @@
+-- component box:
+string title: Subscribe
+string $name: 
+string $email:
+
+-- ftd.column:
+width: fill-container
+padding.rem: 2
+spacing.fixed.rem: 1
+border-width.px: 1
+border-style: solid
+border-color: #dedede
+
+-- ftd.text:
+role: $inherited.types.heading-small
+text: $box.title
+
+-- ftd.text: Name
+style: bold
+role: $inherited.types.label-large
+
+-- ftd.text-input:
+padding.rem: 1
+border-width.px: 1
+border-style: solid
+border-color: #dedede
+width: fill-container
+placeholder: your name
+role: $inherited.types.copy-small
+$on-change$: $ftd.set-string($a = $box.name, v = $VALUE)
+
+-- ftd.text: Email
+style: bold
+role: $inherited.types.label-large
+
+-- ftd.text-input:
+padding.rem: 1
+border-width.px: 1
+border-style: solid
+border-color: #dedede
+width: fill-container
+placeholder: email@example.com
+role: $inherited.types.copy-small
+$on-change$: $ftd.set-string($a = $box.email, v = $VALUE)
+
+-- ftd.text: Subscribe
+role: $inherited.types.label-large
+padding.rem: 1
+background.solid: #000000
+color: #ffffff
+$on-click$: $subscribe(name = $box.name, email = $box.email)
+
+-- end: ftd.column
+
+-- end: box
+
+-- void subscribe(name,email):
+string name:
+string email:
+
+ftd.navigate("/api/subscribe?name=" + name + "&email=" + email)
+
+
+;; ------- DEMO:
+-- box:
+title: Subscribe to our newsletters

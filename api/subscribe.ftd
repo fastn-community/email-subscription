@@ -1,0 +1,26 @@
+-- import: fastn/processors as pr
+
+-- record r-data:
+string name:
+string email:
+
+-- r-data data:
+$processor$: pr.request-data
+
+-- integer status:
+$processor$: pr.pg
+name: $data.name
+email: $data.email
+
+INSERT INTO subscriptions (name, email) VALUES ($name::VARCHAR, $email::VARCHAR);
+
+-- ftd.redirect: /
+code: 302
+
+;; -- ftd.redirect: $get-redirect-url(status = $status)
+;; code: 302
+
+;; -- string get-redirect-url(status):
+;; integer status:
+
+;; "/?status=" + status.get()
