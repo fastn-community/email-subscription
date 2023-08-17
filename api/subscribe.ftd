@@ -8,6 +8,14 @@ string email:
 -- r-data data:
 $processor$: pr.request-data
 
+-- string email: $data.email
+
+-- string list result:
+$processor$: pr.pg
+email: $email
+
+SELECT email FROM subscriptions WHERE email = $email LIMIT 1;
+
 -- integer status:
 $processor$: pr.pg
 name: $data.name
@@ -15,5 +23,24 @@ email: $data.email
 
 INSERT INTO subscriptions (name, email) VALUES ($name::VARCHAR, $email::VARCHAR);
 
--- ftd.text: Successfully subscribed
+-- ftd.column:
+width: fill-container
+height: fill-container
+align-content: center
+padding.rem: 1
+spacing.fixed.rem: 1
+
+-- ftd.text: Already on the List - Thanks!
+role: $inherited.types.copy-regular
+if: { len(result) != 0 }
+
+-- ftd.text: Congratulations, You're All Set!
+if: { len(result) == 0 }
 text if { status == 1 }: Something went wrong.
+role: $inherited.types.copy-regular
+
+-- ftd.text: Home
+link: /
+role: $inherited.types.label-large
+
+-- end: ftd.column
