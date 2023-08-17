@@ -3,6 +3,7 @@
 -- record r-data:
 string name:
 string email:
+string redirect-url:
 
 -- r-data data:
 $processor$: pr.request-data
@@ -38,8 +39,8 @@ if: { len(result) == 0 }
 text if { status == 1 }: Something went wrong.
 role: $inherited.types.copy-regular
 
--- ftd.text: Home
-link: /
+-- ftd.text: Go Back
+link: $data.redirect-url
 role: $inherited.types.label-large
 
 -- end: ftd.column
