@@ -1,5 +1,4 @@
 -- import: fastn/processors as pr
--- import: email-subscription-box/assets
 
 -- record r-data:
 string name:
