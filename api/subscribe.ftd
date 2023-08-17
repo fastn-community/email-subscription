@@ -1,4 +1,5 @@
 -- import: fastn/processors as pr
+-- import: email-subscription-box/assets
 
 -- record r-data:
 string name:
@@ -14,13 +15,5 @@ email: $data.email
 
 INSERT INTO subscriptions (name, email) VALUES ($name::VARCHAR, $email::VARCHAR);
 
--- ftd.redirect: /
-code: 302
-
-;; -- ftd.redirect: $get-redirect-url(status = $status)
-;; code: 302
-
-;; -- string get-redirect-url(status):
-;; integer status:
-
-;; "/?status=" + status.get()
+-- ftd.text: Successfully subscribed
+text if { status == 1 }: Something went wrong.

@@ -1,7 +1,7 @@
 -- component box:
 string title: Subscribe
-string $name: 
-string $email:
+string $name: *$ftd.empty
+string $email: *$ftd.empty
 
 -- ftd.column:
 width: fill-container
