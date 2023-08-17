@@ -10,7 +10,7 @@ Before you begin, ensure you have the following software and tools installed:
 
 ## Configuration
 
-Follow these steps to set up your Supabase PostgreSQL database and obtain the database URL for your Fastn Todo-App:
+Follow these steps to set up your Supabase PostgreSQL database and obtain the database URL:
 
 1. **Sign Up/Login on Supabase**:
 
