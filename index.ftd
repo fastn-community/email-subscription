@@ -1,7 +1,9 @@
 -- component box:
-string title: 👋 Stay In the Loop - Subscribe Now!
+string title: Stay In the Loop - Subscribe Now!
 string $name: *$ftd.empty
 string $email: *$ftd.empty
+string api-url: /api/subscribe
+string redirect-url: /
 
 -- ftd.column:
 padding.rem: 2
@@ -65,7 +67,7 @@ padding.rem: 1
 background.solid: $inherited.colors.cta-tertiary.base
 color: #ffffff
 style: bold
-$on-click$: $subscribe(name = $box.name, email = $box.email)
+$on-click$: $subscribe(endpoint = $box.api-url, name = $box.name, email = $box.email, redirect = $box.redirect-url)
 
 -- end: ftd.column
 
@@ -75,12 +77,15 @@ $on-click$: $subscribe(name = $box.name, email = $box.email)
 
 -- end: box
 
--- void subscribe(name,email):
+-- void subscribe(endpoint,name,email,redirect):
+string endpoint:
 string name:
 string email:
+string redirect:
 
-ftd.navigate("/api/subscribe?name=" + name + "&email=" + email)
-
+ftd.navigate(endpoint + "?name=" + name + "&email=" + email + "&redirect-url=" + redirect)
 
 ;; ------- DEMO:
 -- box:
+api-url: /api/subscribe
+redirect-url: /
